@@ -18,21 +18,42 @@ $users = [
     ]
 ];
 
+$clients = [
+    [
+        "id" => 1,
+        "name" => "pedro",
+        "password" => "123456"
+    ],
+    [
+        "id" => 2,
+        "name" => "ana",
+        "password" => "123456"
+    ],
+    [
+        "id" => 3,
+        "name" => "luis",
+        "password" => "123456"
+    ]
+];
+
 $sales = [
     [
         "id" => 1,
+        "client_id" => 2,
         "products" => "beringela",
         "date" => "22/05/2025 14:35:08"
     ],
     [
         "id" => 2,
+        "client_id" => 3,
         "products" => "carne",
-        "date" => "22/06/2025 11:35:08"
+        "date" => "22/06/2025 11:30:12"
     ],
     [
         "id" => 3,
+        "client_id" => 3,
         "products" => "arroz, feijao, brocolis",
-        "date" => "21/05/2025 14:35:08"
+        "date" => "21/05/2025 14:25:08"
     ]
 ];
 
@@ -69,7 +90,28 @@ function unLoggedScreen(){
 }
 
 function loggedScreen(){
-    echo "oi";
+    echo "Você está deslogado, faça login ou registre-se para usar o sistema." . PHP_EOL;
+    echo "1 - Vender" . PHP_EOL;
+    echo "2 - Saida" . PHP_EOL;
+    echo "3 - Cadastrar novo usuário" . PHP_EOL;
+    echo "4 - Verificar Log" . PHP_EOL;
+    echo "5 - Deslogar" . PHP_EOL;
+    echo "0 - Sair" . PHP_EOL;
+    $option = (int) readline("Escolha uma opção: ");
+    switch ($option) {
+        case 0: 
+            return;
+        case 1:
+            loginScreen();
+            break;
+        case 2:
+            registerScreen();
+            break;
+        default:
+            echo "Inválido";
+            initialScreen();
+            break;
+    }
 }
 
 function loginScreen(){
@@ -139,6 +181,5 @@ function getUserDataByName(string $name){
     }
     return ["status" => true, "data"=> $userData];
 }
-
 
 initialScreen();
