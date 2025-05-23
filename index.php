@@ -63,6 +63,7 @@ function initialScreen(){
         unLoggedScreen();
     }
     loggedScreen();
+    
 }
 
 function unLoggedScreen(){
@@ -73,7 +74,7 @@ function unLoggedScreen(){
     $option = (int) readline("Escolha uma opção: ");
     switch ($option) {
         case 0: 
-            return;
+            exit();
         case 1:
             loginScreen();
             break;
@@ -99,7 +100,7 @@ function loggedScreen(){
     $option = (int) readline("Escolha uma opção: ");
     switch ($option) {
         case 0: 
-            return;
+            exit();
         case 1:
             salesScreen();
             break;
